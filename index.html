@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TDS GA Answer Extractor</title>
+  <meta name="description" content="Extract deterministic answers for TDS Graded Assignments (GA1, GA2, …) and get step-by-step guides for manual questions." />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- CDN deps loaded before app modules -->
+  <!-- seedrandom: exposes Math.seedrandom -->
+  <script src="https://cdn.jsdelivr.net/npm/seedrandom@3.0.5/seedrandom.min.js"></script>
+  <!-- prettier standalone + markdown plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/prettier@3.4.2/standalone.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prettier@3.4.2/plugins/markdown.js"></script>
+</head>
+
+<body>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <header class="hero">
+    <div class="container hero-inner">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        TDS · Graded Assignment Toolkit
+      </div>
+
+      <h1>
+        GA Answer <span>Extractor</span>
+      </h1>
+      <p class="hero-sub">
+        Enter your email and GA number to instantly extract all deterministic answers
+        and get step-by-step guides for manual questions.
+      </p>
+
+      <!-- Form -->
+      <form id="hero-form" class="hero-form" onsubmit="return false">
+        <div class="form-row">
+          <div class="field">
+            <label for="ga-select">Graded Assignment</label>
+            <select id="ga-select">
+              <!-- populated by app.js -->
+            </select>
+          </div>
+          <div class="field">
+            <label for="email-input">Your IITM Email</label>
+            <input
+              id="email-input"
+              type="email"
+              placeholder="21f1234567@ds.study.iitm.ac.in"
+              autocomplete="email"
+              spellcheck="false"
+            />
+          </div>
+        </div>
+
+        <button id="extract-btn" class="extract-btn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          Extract Answers
+        </button>
+      </form>
+    </div>
+  </header>
+
+  <!-- ═══════════════ PROGRESS ═══════════════ -->
+  <div id="progress-wrap" class="progress-wrap hidden">
+    <div id="progress-bar" class="progress-bar" style="width:0%"></div>
+  </div>
+
+  <!-- ═══════════════ RESULTS ═══════════════ -->
+  <main class="container">
+    <div id="results" class="results"></div>
+  </main>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="container">
+      TDS GA Answer Extractor &nbsp;·&nbsp;
+      All computation runs <strong>in your browser</strong> — no data is sent anywhere.
+    </div>
+  </footer>
+
+  <!-- App scripts (Standard) -->
+  <script src="js/utils.js"></script>
+  <script src="js/ga1.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
